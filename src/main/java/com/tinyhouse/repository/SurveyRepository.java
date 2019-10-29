@@ -7,6 +7,5 @@ import com.tinyhouse.model.Survey;
 
 public interface SurveyRepository extends JpaRepository<Survey, Long> {
 
-	Survey findByName(String name);
 	
 }

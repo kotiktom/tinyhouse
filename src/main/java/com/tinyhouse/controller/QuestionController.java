@@ -32,19 +32,9 @@ public class QuestionController {
 		return questionRepository.findAll();
 	}
 	
-	//name = surveyname
-	@PostMapping("/{name}/question")
-	public Question addQuestion(@PathVariable String name, @RequestBody Question question) {
-		
-		if (surveyRepository.findByName(name) == null) {
-            surveyRepository.save(new Survey("name", null));
-        }
-        
-        Question q = question;
-        Survey s = surveyRepository.findByName(name);
-        q.setSurvey(s);
-        questionRepository.save(q);
-        
+
+	@PostMapping("/question")
+	public Question addQuestion(@RequestBody Question question) {
 		
 		return questionRepository.save(question);
 	}
