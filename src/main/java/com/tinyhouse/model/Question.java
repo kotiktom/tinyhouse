@@ -1,8 +1,8 @@
 package com.tinyhouse.model;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.persistence.ManyToOne;
+
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -16,21 +16,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Question extends AbstractPersistable<Long> {
 
-	@NotNull
-	@NotEmpty
-	private String email;
+	private String content;
+	@ManyToOne
+	private Questionnaire questionnaire;
 	
-	@NotNull
-	@NotEmpty
-	private String firstName;
-	
-	@NotNull
-	@NotEmpty
-	private String lastName;
-	
-	@NotNull
-    @NotEmpty
-    private String password;
+	//private List<Answer> answers;
 	
 	     
 }

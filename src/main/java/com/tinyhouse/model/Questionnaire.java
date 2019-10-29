@@ -1,6 +1,9 @@
 package com.tinyhouse.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -16,22 +19,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Questionnaire extends AbstractPersistable<Long> {
 
-	@NotNull
-	@NotEmpty
-	private String email;
-	
-	@NotNull
-	@NotEmpty
-	private String firstName;
-	
-	@NotNull
-	@NotEmpty
-	private String lastName;
-	
-	@NotNull
-    @NotEmpty
-    private String password;
-	
+	@OneToMany(mappedBy = "questionnaire")
+	private List<Question> questions;
 	     
 }
 
