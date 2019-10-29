@@ -17,9 +17,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Questionnaire extends AbstractPersistable<Long> {
+public class Survey extends AbstractPersistable<Long> {
 
-	@OneToMany(mappedBy = "questionnaire")
+	private String topic;
+	@OneToMany(mappedBy = "survey")
 	private List<Question> questions;
 	     
 }

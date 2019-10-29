@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,35 +17,21 @@ import com.tinyhouse.repository.QuestionRepository;
 import com.tinyhouse.repository.SurveyRepository;
 
 @Controller
-public class QuestionController {
+public class SurveyController {
 
-	@Autowired
-	QuestionRepository questionRepository;
 	@Autowired
 	SurveyRepository surveyRepository;
 	
-	@GetMapping("/questions")
+	@GetMapping("/surveys")
 	@ResponseBody
-	public List<Question> getQuestions() {
+	public List<Survey> getQuestions() {
 		
-		return questionRepository.findAll();
+		return surveyRepository.findAll();
 	}
 	
-	//name = surveyname
-	@PostMapping("/{name}/question")
-	public Question addQuestion(@PathVariable String name, @RequestBody Question question) {
-		
-		if (surveyRepository.findByName(name) == null) {
-            surveyRepository.save(new Survey("name", null));
-        }
-        
-        Question q = question;
-        Survey s = surveyRepository.findByName(name);
-        q.setSurvey(s);
-        questionRepository.save(q);
-        
-		
-		return questionRepository.save(question);
+	@PostMapping("/surveys")
+	public Survey addSurvey(@RequestBody Survey survey) {
+		return surveyRepository.save(survey);
 	}
 	
 	

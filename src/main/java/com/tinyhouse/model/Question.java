@@ -18,10 +18,13 @@ public class Question extends AbstractPersistable<Long> {
 
 	private String content;
 	@ManyToOne
-	private Questionnaire questionnaire;
+	private Survey survey;
 	
-	//private List<Answer> answers;
-	
+	/* TODO
+	private int priority;
+	private boolean mandatory;
+	private List<Answer> answers;
+	*/
 	     
 }
 
