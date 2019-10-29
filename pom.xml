@@ -8,14 +8,15 @@
 		<version>2.2.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>com.tinyhouse</groupId>
 	<artifactId>tinyhouse</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>tinyhouse</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Tinyhouse application!</description>
 
 	<properties>
 		<java.version>1.8</java.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -65,12 +66,6 @@
 			</exclusions>
 		</dependency>
 		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
