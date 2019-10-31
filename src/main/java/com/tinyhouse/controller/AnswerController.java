@@ -29,7 +29,7 @@ public class AnswerController {
 	
 	@PostMapping("/questions/{id}/answers/{answer}")
 	@ResponseBody
-	public List<String> postAnswer(@PathVariable long id, String answer){
+	public Question postAnswer(@PathVariable long id, @PathVariable String answer){
 		Question q = questionRepository.getOne(id);
 		
 		if (q.getAnswers() == null) {
@@ -38,8 +38,8 @@ public class AnswerController {
 			q.getAnswers().add(answer);
 		}
 		
+		return questionRepository.save(q);
 		
-		return q.getContent();
 	}
 	
 }
