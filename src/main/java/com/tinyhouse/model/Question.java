@@ -1,5 +1,8 @@
 package com.tinyhouse.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -16,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Question extends AbstractPersistable<Long> {
 
-	private String content;
+	private ArrayList<String> content;
 	@ManyToOne
 	private Survey survey;
 	

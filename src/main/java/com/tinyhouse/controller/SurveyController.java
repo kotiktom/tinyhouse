@@ -24,8 +24,7 @@ public class SurveyController {
 	
 	@GetMapping("/surveys")
 	@ResponseBody
-	public List<Survey> getQuestions() {
-		
+	public List<Survey> getSurveys() {
 		return surveyRepository.findAll();
 	}
 	
