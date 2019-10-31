@@ -26,8 +26,10 @@ public class Question extends AbstractPersistable<Long> {
 	/* TODO
 	private int priority;
 	private boolean mandatory;
-	private List<Answer> answers;
 	*/
-	     
+	private ArrayList<String> answers;
+	
+	
+	
 }
 

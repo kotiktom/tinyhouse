@@ -27,6 +27,7 @@ public class QuestionController {
 	SurveyRepository surveyRepository;
 	
 	@GetMapping("/question/{id}")
+	@ResponseBody
 	public Question getQuestion(@PathVariable long id) {
 		return questionRepository.getOne(id);
 	}
@@ -39,7 +40,10 @@ public class QuestionController {
 	
 
 	@PostMapping("/question")
+	@ResponseBody
 	public Question addQuestion(@RequestBody Question question) {
+		
+		
 		
 		return questionRepository.save(question);
 	}
