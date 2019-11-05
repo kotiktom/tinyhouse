@@ -53,9 +53,6 @@ public class QuestionController {
 	@PostMapping("/question")
 	@ResponseBody
 	public Question addQuestion(@RequestBody Question question) {
-		
-		
-		
 		return questionRepository.save(question);
 	}
 	
@@ -63,7 +60,6 @@ public class QuestionController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST) 
 	public String save(Question question) {
 		questionRepository.save(question);
-		inputrepo.save(question);
 		return "redirect:test";
 		}
 	
