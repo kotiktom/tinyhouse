@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tinyhouse.model.InputType;
 import com.tinyhouse.model.Question;
 import com.tinyhouse.model.Survey;
 import com.tinyhouse.repository.InputTypeRepository;
@@ -58,12 +59,27 @@ public class QuestionController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Question question) {
 		questionRepository.save(question);
-		return "index";
+		inputrepo.save(question);
+		return "redirect:test";
 		}
+	
+	@RequestMapping(value = "/saveque", method = RequestMethod.POST)
+	public String save(InputType inputtype) {
+		inputrepo.save(inputtype);
+		return "redirect:test";
+		}
+	
 	
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String Home2(Model model) {
-		model.addAttribute("inputs", inputrepo.findAll());	
+		model.addAttribute("inputs1", inputrepo.findAll());
+		model.addAttribute("inputs", new InputType());
 		return "test";
 		}
+
+	@GetMapping("/que")
+	@ResponseBody
+	public List<InputType> getQue() {
+		return inputrepo.findAll();
+	}
 }
