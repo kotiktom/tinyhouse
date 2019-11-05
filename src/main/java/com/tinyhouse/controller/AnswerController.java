@@ -27,13 +27,14 @@ public class AnswerController {
 		
 	}
 	
-	@PostMapping("/questions/{id}/answers/{answer}")
+	@PostMapping("/questions/{id}/answers/")
 	@ResponseBody
 	public Question postAnswer(@PathVariable long id, @PathVariable String answer){
 		Question q = questionRepository.getOne(id);
 		
 		if (q.getAnswers() == null) {
 			q.setAnswers(new ArrayList<>());
+			q.getAnswers().add(answer);
 		} else {
 			q.getAnswers().add(answer);
 		}
