@@ -23,11 +23,13 @@ public class AnswerController {
 	public List<String> getAnswers(@PathVariable long id){
 		Question q = questionRepository.getOne(id);
 		
-		return q.getAnswers();		
+		return q.getAnswers();
+		
 	}
 	
 	@PostMapping("/questions/{id}/answers/")
 	@ResponseBody
+	// TODO Muuta vastaus tulemaan itse pyynnön mukana
 	public Question postAnswer(@PathVariable long id, @PathVariable String answer){
 		Question q = questionRepository.getOne(id);
 		
