@@ -10,4 +10,6 @@ import com.tinyhouse.model.Question;
 
 public interface InputTypeRepository extends JpaRepository<InputType, Long> {
 
+	void save(Question question);
+
 }

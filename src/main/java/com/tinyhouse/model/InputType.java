@@ -20,4 +20,6 @@ import lombok.NoArgsConstructor;
 public class InputType extends AbstractPersistable<Long> {
 
 	private String type;
+
 }
+

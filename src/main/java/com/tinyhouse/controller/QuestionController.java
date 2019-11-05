@@ -59,48 +59,31 @@ public class QuestionController {
 		return questionRepository.save(question);
 	}
 	
-	/*
-	@RequestMapping(value = "/question", method = RequestMethod.GET, produces="application/xml")
-    public void show(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        this.surveyService = new SurveyService(surveyRepository);
-        Survey survey = surveyService.find(Long.parseLong(request.getParameter("survey")));
-
-        Question currentQuestion = survey.getQuestionByNumber(Integer.parseInt(request.getParameter("question")));
-        QuestionBuilder builder = getQuestionHandler(currentQuestion, request);
-
-        if (currentQuestion != null) {
-            response.getWriter().print(builder.build());
-        } else {
-            response.getWriter().print(builder.buildNoMoreQuestions());
-        }
-        response.setContentType("application/xml");
-    }	
-    */
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST) 
 	public String save(Question question) {
 		questionRepository.save(question);
-		return "index";
+		inputrepo.save(question);
+		return "redirect:test";
 		}
 	
-	@RequestMapping(value = "/test", method = RequestMethod.GET, produces="text/html")
-	@ResponseBody
-	public void Home2(Model model, HttpServletResponse response) throws Exception {
-		model.addAttribute("inputs", inputrepo.findAll());	
-		
-		List<InputType> A = new ArrayList<>();
-		A = inputrepo.findAll();
-		
-		String returnString = "<html><body>";
-		
-		for (InputType i: A) {
-			returnString += i.getType();
+	@RequestMapping(value = "/saveque", method = RequestMethod.POST)
+	public String save(InputType inputtype) {
+		inputrepo.save(inputtype);
+		return "redirect:test";
 		}
-		
-		returnString += "</body></html>";
-		
-		response.getWriter().print(returnString);
+	
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String Home2(Model model) {
+		model.addAttribute("inputs1", inputrepo.findAll());
+		model.addAttribute("inputs", new InputType());
+		return "test";
+		}
 
-		response.setContentType("text/html");
-		}
+	@GetMapping("/que")
+	@ResponseBody
+	public List<InputType> getQue() {
+		return inputrepo.findAll();
+	}
 }

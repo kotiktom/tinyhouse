@@ -36,13 +36,14 @@ public class TinyhouseApplication {
 			
 			questionrepo.save(q);
 			
-			InputType i = new InputType("<input type=\"checkbox\" name=\"vehicle1\" value=\"Bike\"> I have a bike");
-			InputType i2 = new InputType("<input type=\"checkbox\" name=\"vehicle2\" value=\"Car\"> I have a car" );
-			InputType i3 = new InputType("<input type=\"checkbox\" name=\"vehicle3\" value=\"Boat\" checked> I have a boat" );
-			
+			InputType i = new InputType("<h4>Text: <input type=\"text\" th:field=\"*{questions}\" th:value=\"test\"/></h4>");
+			InputType i2 = new InputType("<h4>Checkbox: <input type=\"checkbox\" th:field=\"*{questions}\" th:value=\"test\"/><h4>");
+			InputType i3 = new InputType("<h4>Radio: <input type=\"radio\" th:field=\"*{questions}\" th:value=\"test\"/><h4>");
+
 			inputrepo.save(i);
 			inputrepo.save(i2);
 			inputrepo.save(i3);
+	
 		};
 	
 }}
