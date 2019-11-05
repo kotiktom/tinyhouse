@@ -23,8 +23,7 @@ public class AnswerController {
 	public List<String> getAnswers(@PathVariable long id){
 		Question q = questionRepository.getOne(id);
 		
-		return q.getAnswers();
-		
+		return q.getAnswers();		
 	}
 	
 	@PostMapping("/questions/{id}/answers/")

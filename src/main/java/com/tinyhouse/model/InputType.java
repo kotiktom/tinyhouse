@@ -17,17 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Question extends AbstractPersistable<Long> {
+public class InputType extends AbstractPersistable<Long> {
 
-	private ArrayList<String> questions;
-	@ManyToOne
-	private Survey survey;
-	
-	/* TODO
-	private int priority;
-	private boolean mandatory;
-	*/
-	
-	private ArrayList<String> answers;
-	
+	private String type;
 }
