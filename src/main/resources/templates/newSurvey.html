@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>test</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+
+
+<body>
+	<h1>Moro!</h1>
+	
+
+	<form action="#" th:action="@{/savesurvey}" th:object="${survey}" method="post"> 
+	  <h3 id="cusinf">Create a new survey</h3>
+
+ 		 <input class="custom-select" type="text" th:field="*{topic}"/>
+ 		 <input class="custom-select" type="number" th:field="*{questionAmount}"/>
+
+ 		 <p><input id="save" class="custom-select" type="submit" value="Submit" th:value="Save"/>	
+    </form>
+
+    
+</body>
+<script>
+</script>
+
+</html>
