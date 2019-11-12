@@ -22,14 +22,14 @@ public class TinyhouseApplicationTests {
 	@Test
     public void createQuestion() {
 		Question newQuestion = new Question();
-		newQuestion.setQuestion("Testi 1");
+		newQuestion.setContent("Testi 1");
 		
 		questionRepository.save(newQuestion);
 		
 		Question q = questionRepository.getOne(newQuestion.getId());
 		
     	assertThat(q.getId()).isNotNull();
-    	assertThat(q.getQuestion().contentEquals("Testi "));
+    	assertThat(q.getContent().contentEquals("Testi "));
     }
  
 

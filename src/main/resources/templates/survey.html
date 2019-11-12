@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Exam</title>
+    </head>
+    <body>
+
+        <header th:replace="fragments/header :: header">
+            <p>header with links etc</p>
+        </header>
+
+		<h1 th:text="${survey.subject}"></h1>        <h2>Questions</h2>
+
+        <section th:each="question: ${survey.questions}">
+            <p th:utext="${question.content}">content</p>
+        </section>
+
+        <h2>Add an existing question to survey</h2>
+
+       
+            
+                <form th:action="@{/admin/surveys/{surveyId}/questions/(surveyId=${survey.id})}" method="POST">
+                <p>Content: <textarea name="content"></textarea></p>
+            	<input type="submit" value="Add"></input>
+                
+                   
+                </form>
+         
+
+    </body>
+</html>

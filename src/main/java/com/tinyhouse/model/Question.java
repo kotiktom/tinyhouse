@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Question extends AbstractPersistable<Long> {
 
-	private String question;
+	private String content;
 	
 	@JsonIgnore
 	@ManyToOne
