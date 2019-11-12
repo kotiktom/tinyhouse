@@ -10,4 +10,5 @@ public interface SurveyRepository extends JpaRepository<Survey, Long> {
 	@Query(
 	value = "SELECT TOP 1 questionAmount FROM Survey ORDER BY ID DESC", nativeQuery = true)
 	String FindLastRecordSurvey();
+	
 }

@@ -24,6 +24,7 @@ public class TinyhouseApplication {
 	public CommandLineRunner tinyhouseRunner(QuestionRepository questionrepo, InputTypeRepository inputrepo) {
 		return (args) -> {
 			
+			
 			ArrayList<String> questions = new ArrayList<String>();
 			questions.add("test1");
 			questions.add("test2");
@@ -42,17 +43,17 @@ public class TinyhouseApplication {
 			inputs.add("<h4><input id=\"save\" type=\"submit\" value=\"Submit\"/>");
 			
 			//Question q = new Question(questions, inputs, answers, null);
-			/*
-			Question q1 = new Question("Koulutusohjelma: ", null);
-			Question q2 = new Question("Opiskeluvuosi: ", null);
-			Question q3 = new Question("Mitä teet vapaa-ajallasi: ", null);
-			Question q4 = new Question("Vapaa-aikaa on mielestäni riittävästi: ", null);
+		
+			Question q1 = new Question("Koulutusohjelma: ", null, null);
+			Question q2 = new Question("Opiskeluvuosi: ", null, null);
+			Question q3 = new Question("Mitä teet vapaa-ajallasi: ", null, null);
+			Question q4 = new Question("Vapaa-aikaa on mielestäni riittävästi: ", null, null);
 			
 			questionrepo.save(q1);
 			questionrepo.save(q2);
 			questionrepo.save(q3);
 			questionrepo.save(q4);
-		*/	
+			
 			InputType i = new InputType("<h4>Text: <input type=\"text\"value=\"input\"/></h4>", "Text");
 			InputType i2 = new InputType("<h4>Checkbox: <input type=\"checkbox\" value=\"input\"/><h4>", "Checkbox");
 			InputType i3 = new InputType("<h4>Radio: <input type=\"radio\" value=\"input\"/><h4>", "Radio");
