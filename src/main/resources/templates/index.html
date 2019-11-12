@@ -6,20 +6,33 @@
 
 </head>
 
+
 <body>
-	<h1>Hello world!</h1>
+	<h1>Teretulemasi kyssäri keneraattori!</h1>
 	
-
-	  <form action="#" th:action="@{../save}" th:object="${Question}" method="post"> 
-	  <h3 id="cusinf">Select customer</h3>
+		  <form action="#" th:action="@{/save}" th:object="${question}" method="post"> 
+	  <h3 id="cusinf">Create a new question</h3>
 	  <label for="deplist"></label>
- 			<select >
-		<option>
-
+	  
+	  <select class="custom-select" th:field="*{survey}">
+		<option th:each="Survey: ${allSurveys}"
+		th:value="${Survey.id}"
+		th:text="${Survey.topic}">
+		</option>
+ 		 </select>
+ 		 </br></br>
+ 		 
+	  <div th:each="InputType: ${loopValue}">
+ 			<select class="custom-select" th:field="*{inputTypes}">
+		<option th:each="InputType: ${inputs}"
+		th:value="${InputType.type}"
+		th:text="${InputType.typename}">
 		</option>
  		 </select>	
-		
- 		 <p><input id="save" class="custom-select" type="submit" value="Submit" th:value="Save" /> 	
+ 		 <input class="custom-select" type="text" th:field="*{questions}"/>
+		</div>
+ 		 <p><input id="save" class="custom-select" type="submit" value="Submit" th:value="Save"/>
+ 		
     </form>
     
 </body>

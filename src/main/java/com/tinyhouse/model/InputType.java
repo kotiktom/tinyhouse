@@ -18,8 +18,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class InputType extends AbstractPersistable<Long> {
-
 	private String type;
+	private String typename;
 
 }
 

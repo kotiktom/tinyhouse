@@ -3,6 +3,16 @@
 <head>
     <title>test</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        
+        <script>
+        function myFunction() {
+        	axios.get('http://localhost:8080/questions');
+        	console.log()
+      	return 
+        	}
+        
+        </script>
 
 </head>
 
@@ -14,7 +24,6 @@
     	<td th:utext="${InputType.type}"></td>
     	
 		</tr>
-	 <p><input id="save" class="custom-select" type="submit" value="Submit" th:value="Save" /> 	
     </form>
     
 </body>
