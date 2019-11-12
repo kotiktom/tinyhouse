@@ -50,15 +50,19 @@ public class AdminController{
         return "redirect:/admin/surveys";
     }
 
-    @PostMapping("/admin/surveys/{surveyId}/questions/{questionId}")
+    @PostMapping("/admin/surveys/{surveyId}/questions/")
     @Transactional
-    public String addQuestionToSurvey(@PathVariable Long surveyId, @PathVariable Long questionId) {
+    public String addQuestionToSurvey(@PathVariable Long surveyId, @RequestParam String content) {
 
         Survey survey = surveyRepository.getOne(surveyId);
-        Question question = questionRepository.getOne(questionId);
-        
-        survey.getQuestions().add(question);
+        Question question = new Question();
+        question.setAnswers(new ArrayList<>());
+        question.setContent(content);
         question.setSurvey(survey);
+        questionRepository.save(question);
+
+        survey.getQuestions().add(question);
+        
         
         questionRepository.save(question);
         surveyRepository.save(survey);
