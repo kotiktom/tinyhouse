@@ -21,10 +21,12 @@ public class AnswerController {
 	@GetMapping("/questions/{id}/answers")
 	@ResponseBody
 	public List<String> getAnswers(@PathVariable long id){
+		/*
 		Question q = questionRepository.getOne(id);
 		
 		return q.getAnswers();
-		
+		*/
+		return null;
 	}
 	
 	@PostMapping("/questions/{id}/answers/")
@@ -32,14 +34,14 @@ public class AnswerController {
 	// TODO Muuta vastaus tulemaan itse pyynnön mukana
 	public Question postAnswer(@PathVariable long id, @PathVariable String answer){
 		Question q = questionRepository.getOne(id);
-		
+		/*
 		if (q.getAnswers() == null) {
 			q.setAnswers(new ArrayList<>());
 			q.getAnswers().add(answer);
 		} else {
 			q.getAnswers().add(answer);
 		}
-		
+		*/
 		return questionRepository.save(q);
 		
 	}

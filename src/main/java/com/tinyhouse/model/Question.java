@@ -9,8 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-
+import org.junit.Ignore;
 import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,19 +23,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Question extends AbstractPersistable<Long> {
+
+	private String question;
 	
-	@Column(length = 8000)
-	private ArrayList<String> questions;
-	@Column(length = 8000)
-	private ArrayList<String> inputTypes;
-	
-	/* TODO
-	private int priority;
-	private boolean mandatory;
-	*/
-	
-	private ArrayList<String> answers;
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "survey")
 	private Survey survey;
 }
