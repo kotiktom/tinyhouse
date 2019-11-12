@@ -32,3 +32,212 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 ### Acknowledgments
 Hat tip to anyone whose code was used and for all the coffee that kept us awake.
+
+# THIS SECTION CONTAINS REST/API DOCUMENTATION
+
+## Show Question
+
+Returns json data about a single question.
+
+    URL
+
+    /question/:id
+
+    Method:
+
+    GET
+
+    URL Params
+
+    Required:
+
+    id=[Long]
+
+    Data Params
+
+    None
+
+    Success Response:
+        Code: 200
+        Content: 
+	
+	{
+
+    "id": 1,
+    "questions": [
+        "test1",
+        "test2"
+    ],
+    "survey": null,
+    "answers": [
+        "test1",
+        "test2"
+    ],
+    "new": false,
+    "hibernateLazyInitializer": { }
+
+}
+
+    Error Response:
+        Code: type=Internal Server Error, status=500
+        Content: { error : "Question doesn't exist" }
+
+    OR
+        Code: 401 UNAUTHORIZED
+        Content: { error : "You are unauthorized to make this request." }
+
+    Sample Call:
+
+      $.ajax({
+        url: "/question/1",
+        dataType: "json",
+        type : "GET",
+        success : function(r) {
+          console.log(r);
+        }
+      });
+
+## Show questions
+
+Returns json data about all questions plural.
+
+    URL
+
+    /questions/:id
+
+    Method:
+
+    GET
+
+    URL Params
+
+    Required:
+
+    id=[Long]
+
+    Data Params
+
+    None
+
+    Success Response:
+        Code: 200
+        Content: 
+	
+[
+    {
+        "id": 1,
+        "questions": [
+            "test1",
+            "test2"
+        ],
+        "survey": null,
+        "answers": [
+            "test1",
+            "test2"
+        ],
+        "new": false
+    }
+]
+
+    Error Response:
+        Code: 
+        Content:
+
+    OR
+        Code: 
+        Content: 
+
+    Sample Call:
+
+      $.ajax({
+        url: "/questions",
+        dataType: "json",
+        type : "GET",
+        success : function(r) {
+          console.log(r);
+        }
+      });
+
+## Post question
+
+Returns json data about posted question. Using Postman app
+
+New guestion
+API CALL:
+http://localhost:8080/question
+METHOD: POST
+PARAMETERS:
+- 
+EXAMPLES OF API CALL:
+http://localhost:8080/question (METHOD POST)
+API REQUEST BODY:
+ {
+        
+        "questions": [
+            "test1",
+            "test2"
+        ],
+      
+        "answers": [
+            "test1",
+            "test2"
+        ]
+       
+    }
+
+API RESPONSE:    ???????
+{
+    "id": 5,
+    "questions": [
+        "test1",
+        "test2"
+    ],
+    "survey": null,
+    "answers": [
+        "test1",
+        "test2"
+    ],
+    "new": false
+}
+
+## Post answer /*saattaa olla keskeneräinen toistaiseksi */
+
+Returns json data about posted question. Using Postman app
+
+New guestion
+API CALL:
+http://localhost:8080/questions/1/answers
+METHOD: POST
+PARAMETERS:
+- 
+EXAMPLES OF API CALL:
+http://localhost:8080/questions/1/answers (METHOD POST)
+API REQUEST BODY:
+ {
+        
+        "questions": [
+            "test1",
+            "test2"
+        ],
+      
+        "answers": [
+            "test1",
+            "test2"
+        ]
+       
+    }
+
+API RESPONSE:    ???????
+{
+    "id": 5,
+    "questions": [
+        "test1",
+        "test2"
+    ],
+    "survey": null,
+    "answers": [
+        "test1",
+        "test2"
+    ],
+    "new": false
+}
