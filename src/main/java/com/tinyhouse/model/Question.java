@@ -2,6 +2,7 @@ package com.tinyhouse.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class Question extends AbstractPersistable<Long> {
 	private ArrayList<String> questions;
 	@Column(length = 8000)
 	private ArrayList<String> inputTypes;
-
+	
 	/* TODO
 	private int priority;
 	private boolean mandatory;
