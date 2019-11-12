@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-import org.junit.Ignore;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,4 +27,7 @@ public class Question extends AbstractPersistable<Long> {
 	@JsonIgnore
 	@ManyToOne
 	private Survey survey;
+
+	@OneToMany(mappedBy = "question")
+	private List<Answer> answers;	
 }

@@ -9,7 +9,6 @@ import com.tinyhouse.model.Question;
 
 public interface QuestionRepository extends JpaRepository<Question, Long> {
 
-	List<Question> findByQuestion(String string);
 
 	
 

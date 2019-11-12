@@ -42,6 +42,7 @@ public class TinyhouseApplication {
 			inputs.add("<h4><input id=\"save\" type=\"submit\" value=\"Submit\"/>");
 			
 			//Question q = new Question(questions, inputs, answers, null);
+			/*
 			Question q1 = new Question("Koulutusohjelma: ", null);
 			Question q2 = new Question("Opiskeluvuosi: ", null);
 			Question q3 = new Question("Mitä teet vapaa-ajallasi: ", null);
@@ -51,7 +52,7 @@ public class TinyhouseApplication {
 			questionrepo.save(q2);
 			questionrepo.save(q3);
 			questionrepo.save(q4);
-			
+		*/	
 			InputType i = new InputType("<h4>Text: <input type=\"text\"value=\"input\"/></h4>", "Text");
 			InputType i2 = new InputType("<h4>Checkbox: <input type=\"checkbox\" value=\"input\"/><h4>", "Checkbox");
 			InputType i3 = new InputType("<h4>Radio: <input type=\"radio\" value=\"input\"/><h4>", "Radio");

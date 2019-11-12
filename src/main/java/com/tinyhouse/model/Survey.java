@@ -23,6 +23,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Survey extends AbstractPersistable<Long> {
 	
+
+	
 	private String topic;
 	@Column(name = "QUESTIONAMOUNT")
 	private int questionAmount;
@@ -30,5 +32,6 @@ public class Survey extends AbstractPersistable<Long> {
 	@OneToMany(mappedBy = "survey")
 	@JsonIgnore
 	private List<Question> questions;	     
+	
 }
 

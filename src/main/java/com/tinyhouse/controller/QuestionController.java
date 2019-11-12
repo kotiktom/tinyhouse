@@ -57,19 +57,19 @@ public class QuestionController {
 	}
 	
 
-	@RequestMapping(value = "/save", method = RequestMethod.POST) 
+	@PostMapping("/save")
 	public String save(Question question) {
 		questionRepository.save(question);
 		return "redirect:test";
 		}
 	
-	@RequestMapping(value = "/saveque", method = RequestMethod.POST)
+	@PostMapping("/saveque")
 	public String save(InputType inputtype) {
 		inputrepo.save(inputtype);
 		return "redirect:index";
 		}
 	
-	@RequestMapping(value = "/savesurvey", method = RequestMethod.POST)
+	@PostMapping("/savesurvey")
 	public String saveSurvey(Survey survey) {
 		surveyRepository.save(survey);
 		
@@ -77,12 +77,13 @@ public class QuestionController {
 		}
 	
 	
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	@GetMapping("/test")
 	public String Home2(Model model) {
 		model.addAttribute("inputs1", inputrepo.findAll());
 		model.addAttribute("inputs", new InputType());
+
 		return "test";
-		}
+	}
 	
 	public List<String> QuestionAmount() {
 	int in = Integer.parseInt(surveyRepository.FindLastRecordSurvey());
@@ -97,8 +98,9 @@ public class QuestionController {
 	}
 	
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@GetMapping("/index")
 	public String Home(Model model) {
+
 		
 		int in = Integer.parseInt(surveyRepository.FindLastRecordSurvey());
 		ArrayList<String> list = new ArrayList<String>();
@@ -109,7 +111,6 @@ public class QuestionController {
 			i++;
 		}
 		
-		
 		model.addAttribute("inputs", inputrepo.findAll());
 		model.addAttribute("allSurveys", surveyRepository.findAll());
 		model.addAttribute("loopValue", list);
@@ -117,7 +118,7 @@ public class QuestionController {
 		return "index";
 		}
 	
-	@RequestMapping(value = "/addsurvey", method = RequestMethod.GET)
+	@GetMapping("/addsurvey")
 	public String AddSurvey(Model model) {
 		model.addAttribute("survey", new Survey());
 		return "newSurvey";
