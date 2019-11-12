@@ -36,19 +36,19 @@ public class TinyhouseApplication {
 			
 			ArrayList<String> inputs = new ArrayList<String>();
 			
-			inputs.add("<h4>Text: <input type=\"text\" th:field=\"*{questions}\" th:value=\"test\"/></h4>");
-			inputs.add("<h4>Checkbox: <input type=\"checkbox\" th:field=\"*{questions}\" th:value=\"test\"/><h4>");
-			inputs.add("<h4>Radio: <input type=\"radio\" th:field=\"*{questions}\" th:value=\"test\"/><h4>");
-			inputs.add("<p><input id=\"save\" class=\"custom-select\" type=\"submit\" value=\"Submit\"/>");
+			inputs.add("<h4>Text: <input type=\"text\"value=\"input\"/></h4>");
+			inputs.add("<h4>Checkbox: <input type=\"checkbox\" value=\"input\"/><h4>");
+			inputs.add("<h4>Radio: <input type=\"radio\" value=\"input\"/><h4>");
+			inputs.add("<h4><input id=\"save\" type=\"submit\" value=\"Submit\"/>");
 			
 			Question q = new Question(questions, inputs, answers, null);
 			
 			questionrepo.save(q);
 			
-			InputType i = new InputType("<h4>Text: <input type=\"text\" th:field=\"*{questions}\" th:value=\"test\"/></h4>", "Text");
-			InputType i2 = new InputType("<h4>Checkbox: <input type=\"checkbox\" th:field=\"*{questions}\" th:value=\"test\"/><h4>", "Checkbox");
-			InputType i3 = new InputType("<h4>Radio: <input type=\"radio\" th:field=\"*{questions}\" th:value=\"test\"/><h4>", "Radio");
-			InputType i4 = new InputType("<p><input id=\"save\" class=\"custom-select\" type=\"submit\" value=\"Submit\"/>", "Submit");
+			InputType i = new InputType("<h4>Text: <input type=\"text\"value=\"input\"/></h4>", "Text");
+			InputType i2 = new InputType("<h4>Checkbox: <input type=\"checkbox\" value=\"input\"/><h4>", "Checkbox");
+			InputType i3 = new InputType("<h4>Radio: <input type=\"radio\" value=\"input\"/><h4>", "Radio");
+			InputType i4 = new InputType("<h4><input id=\"save\" type=\"submit\" value=\"Submit\"/>", "Submit");
 
 			inputrepo.save(i);
 			inputrepo.save(i2);
