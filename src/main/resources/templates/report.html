@@ -25,17 +25,15 @@
 		<table border="1" class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th>Linkki</th>
+					
 					<th>Question</th>
 					<th>Answer</th>
 					
 				</tr>
 			</thead>	
 			<tbody>
-				<tr th:each="question : ${question}">
-
-					<td><a th:href="@{~/questions/{id}(id=${question.id})}" target="_blank" rel="noopener">#</a></td>
-					<td th:text="${question.content} "></td>					
+				<tr th:each="question : ${question}">			
+ 				 <td>  <a th:href="@{~/questions/{id}(id=${question.id})}">  [[${question.content}]]</a> <br/> </td>
 					<td th:text="${question.answers} "></td>
 				</tr>
 			</tbody>
@@ -43,6 +41,8 @@
 	</div>
 </body>
 </html>
+
+
 
 
 
