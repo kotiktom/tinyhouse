@@ -124,9 +124,9 @@ public class QuestionController {
 		return "newSurvey";
 		}
 	
-	@GetMapping("/que")
-	@ResponseBody
-	public List<InputType> getQue() {
-		return inputrepo.findAll();
+	@RequestMapping("/report")
+	public String report (Model model) {
+		model.addAttribute("question",questionRepository.findAll());
+		return "report";
 	}
 }
