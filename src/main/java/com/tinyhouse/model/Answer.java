@@ -9,6 +9,8 @@ import javax.persistence.OneToMany;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,10 +21,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Answer extends AbstractPersistable<Long> {
 
+	
+	private String answer;
+	
+	@JsonIgnore
 	@ManyToOne
 	private Question question;
 	
-	private String answer;
+	
 	
 
 	

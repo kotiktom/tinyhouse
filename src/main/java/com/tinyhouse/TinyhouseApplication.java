@@ -1,12 +1,14 @@
 package com.tinyhouse;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.tinyhouse.model.Answer;
 import com.tinyhouse.model.InputType;
 import com.tinyhouse.model.Question;
 import com.tinyhouse.repository.InputTypeRepository;
@@ -31,9 +33,11 @@ public class TinyhouseApplication {
 			questions.add("test3");
 			questions.add("test4");
 			
-			ArrayList<String> answers = new ArrayList<String>();
+			List<String> answers = new ArrayList<String>();
 			answers.add("test1");
 			answers.add("test2");
+			answers.add("test2");
+			
 			
 			ArrayList<String> inputs = new ArrayList<String>();
 			
@@ -44,10 +48,18 @@ public class TinyhouseApplication {
 			
 			//Question q = new Question(questions, inputs, answers, null);
 		
-			Question q1 = new Question("Koulutusohjelma: ", null, null);
+			
 			Question q2 = new Question("Opiskeluvuosi: ", null, null);
 			Question q3 = new Question("Mitä teet vapaa-ajallasi: ", null, null);
 			Question q4 = new Question("Vapaa-aikaa on mielestäni riittävästi: ", null, null);
+			
+			Answer a1 = new Answer("testi",q4);
+			
+			ArrayList<Answer> vastaukset = new ArrayList<Answer>();
+			vastaukset.add(a1);
+
+			
+			Question q1 = new Question("Koulutusohjelma: ", null, vastaukset);
 			
 			questionrepo.save(q1);
 			questionrepo.save(q2);
