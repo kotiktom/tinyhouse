@@ -1,8 +1,6 @@
 package com.tinyhouse.model;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -23,11 +21,13 @@ import lombok.NoArgsConstructor;
 public class Question extends AbstractPersistable<Long> {
 
 	private String content;
-	
+
+	private InputType inputtype = InputType.TEXTFIELD;
+
 	@JsonIgnore
 	@ManyToOne
 	private Survey survey;
 
 	@OneToMany(mappedBy = "question")
-	private List<Answer> answers;	
+	private List<Answer> answers;
 }

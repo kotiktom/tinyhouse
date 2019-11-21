@@ -1,25 +1,7 @@
 package com.tinyhouse.model;
 
-import java.util.ArrayList;
-import java.util.List;
+public enum InputType {
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-
-
-import org.springframework.data.jpa.domain.AbstractPersistable;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class InputType extends AbstractPersistable<Long> {
-	private String type;
-	private String typename;
+	TEXTFIELD, RADIO, CHECKBOX, DROPDOWN
 
 }
-
