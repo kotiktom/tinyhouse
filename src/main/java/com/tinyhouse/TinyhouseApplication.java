@@ -42,7 +42,6 @@ public class TinyhouseApplication {
 			questionrepo.save(q3);
 			
 			answerService.saveAnswer(q1.getId(), "Vastaus 1");
-			answerService.saveAnswer(q1.getId(), "Vastaus 2");
 
 			/*
 			 * InputType i = new
