@@ -1,5 +1,6 @@
 package com.tinyhouse.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -30,4 +31,10 @@ public class Question extends AbstractPersistable<Long> {
 
 	@OneToMany(mappedBy = "question")
 	private List<Answer> answers;
+	
+	public Question(String content) {
+		this.content = content;
+		answers = new ArrayList<>();
+	}
+	
 }

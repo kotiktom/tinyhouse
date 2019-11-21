@@ -2,6 +2,9 @@ package com.tinyhouse.model;
 
 public enum InputType {
 
-	TEXTFIELD, RADIO, CHECKBOX, DROPDOWN
+	TEXTFIELD,
+	RADIO,
+	CHECKBOX,
+	DROPDOWN
 
 }

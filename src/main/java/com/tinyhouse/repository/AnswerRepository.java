@@ -9,5 +9,4 @@ import com.tinyhouse.model.Question;
 
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
 		
-		
-	}
+}

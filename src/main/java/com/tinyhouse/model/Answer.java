@@ -28,8 +28,8 @@ public class Answer extends AbstractPersistable<Long> {
 	@ManyToOne
 	private Question question;
 	
-	
-	
-
+	public Answer(String answer) {
+		this.answer = answer;
+	}
 	
 }
