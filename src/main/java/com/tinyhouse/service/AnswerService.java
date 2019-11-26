@@ -22,9 +22,9 @@ public class AnswerService {
 	@Autowired
 	QuestionRepository questionRepository;
 	
-	@GetMapping("/questions/{id}/answers")
-	@ResponseBody
-	public List<Answer> getAnswers(@PathVariable long id){
+
+	
+	public List<Answer> getAnswers(long id){
 		
 		Question q = questionRepository.getOne(id);
 		

@@ -36,10 +36,8 @@ public class AnswerController {
 	@GetMapping("/questions/{id}/answers")
 	@ResponseBody
 	public List<Answer> getAnswers(@PathVariable long id){
-		
-		Question q = questionRepository.getOne(id);
-		
-		return q.getAnswers();
+	
+		return answerService.getAnswers(id);
 	
 	}
 
@@ -72,11 +70,7 @@ public class AnswerController {
 		return q;
 	}
 	
-	@GetMapping("/answers")
-	@ResponseBody
-	public List<Answer> getAnswers() {
-		return answerrepo.findAll();
-	}
+
 	
 	
 	
