@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -29,6 +30,7 @@ public class Question extends AbstractPersistable<Long> {
 	@ManyToOne
 	private Survey survey;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "question")
 	private List<Answer> answers;
 	
