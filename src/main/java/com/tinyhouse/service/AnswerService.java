@@ -24,7 +24,7 @@ public class AnswerService {
 	
 
 	
-	public List<Answer> getAnswers(long id){
+	public List<Answer> getAnswers(@PathVariable long id){
 		
 		Question q = questionRepository.getOne(id);
 		

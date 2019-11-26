@@ -41,6 +41,8 @@ public class TinyhouseApplication {
 			questionrepo.save(q2);
 			questionrepo.save(q3);
 			
+			
+			
 			answerService.saveAnswer(q1.getId(), "Vastaus 1");
 
 			/*
