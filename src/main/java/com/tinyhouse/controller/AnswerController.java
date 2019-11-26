@@ -60,8 +60,6 @@ public class AnswerController {
 	// TODO Muuta vastaus tulemaan itse pyynnön mukana
 	public Question postAnswer(@RequestBody ArrayList<ResponseAnswer> answer){
 		
-		ArrayList<ResponseAnswer> responses = answer;
-
 		for (int i = 0; i < answer.size(); i++) {
 		Question q = questionRepository.getOne(answer.get(i).getQuestionid());
 		
@@ -83,7 +81,5 @@ public class AnswerController {
 	public List<Answer> getAnswers() {
 		return answerrepo.findAll();
 	}
-	
-	
-	
+		
 }
