@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tinyhouse.model.Answer;
 import com.tinyhouse.model.Question;
+import com.tinyhouse.model.ResponseAnswer;
 import com.tinyhouse.repository.AnswerRepository;
 import com.tinyhouse.repository.QuestionRepository;
 import com.tinyhouse.service.AnswerService;
@@ -42,22 +43,22 @@ public class AnswerController {
 	
 	}
 
-	@PostMapping("/questions/{id}/answers")
-	// TODO Muuta vastaus tulemaan itse pyynnön mukana
-	public String saveAnswer(@PathVariable long id, @RequestBody String answer){
-		// Functional brahs
-		answerService.saveAnswer(id, answer);
-
-		return "redirect:/question/{}id/answers";
-	}
+//	@PostMapping("/questions/answers")
+//	// TODO Muuta vastaus tulemaan itse pyynnön mukana
+//	public String saveAnswer( @RequestBody Answer answer){
+//		// Functional brahs
+//		answerService.saveAnswer(id, answer);
+//
+//		return "redirect:/question/{}id/answers";
+//	}
 	
-	@PostMapping("/questions/{id}/answers/NOGO")
+	@PostMapping("/questions/answers")
 	@ResponseBody
 	// TODO Muuta vastaus tulemaan itse pyynnön mukana
-	public Question postAnswer(@PathVariable long id, @RequestBody String answer){
-		Question q = questionRepository.getOne(id);
+	public Question postAnswer(@RequestBody ResponseAnswer answer){
+		Question q = questionRepository.getOne(answer.getQuestionid());
 		
-		Answer newAnswer = new Answer(answer, q);
+		Answer newAnswer = new Answer(answer.getAnswer(), q);
 		
 		ArrayList<Answer> newQuestionWithAnswer = new ArrayList<Answer>();
 		newQuestionWithAnswer.add(newAnswer);
