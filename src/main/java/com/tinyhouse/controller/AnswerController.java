@@ -36,40 +36,34 @@ public class AnswerController {
 	@GetMapping("/questions/{id}/answers")
 	@ResponseBody
 	public List<Answer> getAnswers(@PathVariable long id){
-		
-		Question q = questionRepository.getOne(id);
-		
-		return q.getAnswers();
+	
+		return answerService.getAnswers(id);
 	
 	}
 
 
-	@PostMapping("/questions/{id}/answers")
-	// TODO Muuta vastaus tulemaan itse pyynnön mukana
-	@ResponseBody
-	public String saveAnswer(@PathVariable long id, @RequestBody String answer){
-		// Functional brahs
-		answerService.saveAnswer(id, answer);
 
-		return "Test";
-	}
 
 	
 	@PostMapping("/questions/answers")
 	@ResponseBody
 	// TODO Muuta vastaus tulemaan itse pyynnön mukana
-	public Question postAnswer(@RequestBody ResponseAnswer answer){
-		Question q = questionRepository.getOne(answer.getQuestionid());
+	public Question postAnswer(@RequestBody ArrayList<ResponseAnswer> answer){
 		
-		Answer newAnswer = new Answer(answer.getAnswer(), q);
+		for (int i = 0; i < answer.size(); i++) {
+		Question q = questionRepository.getOne(answer.get(i).getQuestionid());
+		
+		Answer newAnswer = new Answer(answer.get(i).getAnswer(), q);
 		
 		ArrayList<Answer> newQuestionWithAnswer = new ArrayList<Answer>();
 		newQuestionWithAnswer.add(newAnswer);
 	
 		answerrepo.save(newAnswer);
-		q.getAnswers().add(newAnswer);		
+		q.getAnswers().add(newAnswer);	
+		}
 		
-		return q;
+		return null;
+		
 	}
 	
 	@GetMapping("/answers")
@@ -77,7 +71,5 @@ public class AnswerController {
 	public List<Answer> getAnswers() {
 		return answerrepo.findAll();
 	}
-	
-	
-	
+
 }

@@ -31,6 +31,7 @@ public class Question extends AbstractPersistable<Long> {
 	@ManyToOne
 	private Survey survey;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "question")
 	private List<Answer> answers;
 	
