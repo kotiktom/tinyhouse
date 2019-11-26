@@ -10,7 +10,6 @@ import com.tinyhouse.repository.AnswerRepository;
 import com.tinyhouse.repository.QuestionRepository;
 
 @Service
-
 public class AnswerService {
 
 	@Autowired

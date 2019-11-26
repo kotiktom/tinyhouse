@@ -44,11 +44,12 @@ public class AnswerController {
 
 	@PostMapping("/questions/{id}/answers")
 	// TODO Muuta vastaus tulemaan itse pyynnön mukana
+	@ResponseBody
 	public String saveAnswer(@PathVariable long id, @RequestBody String answer){
 		// Functional brahs
 		answerService.saveAnswer(id, answer);
 
-		return "redirect:/question/{}id/answers";
+		return "Test";
 	}
 	
 	@PostMapping("/questions/{id}/answers/NOGO")
