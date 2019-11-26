@@ -43,6 +43,7 @@ public class AnswerController {
 	
 	}
 
+<<<<<<< HEAD
 //	@PostMapping("/questions/answers")
 //	// TODO Muuta vastaus tulemaan itse pyynnön mukana
 //	public String saveAnswer( @RequestBody Answer answer){
@@ -51,6 +52,17 @@ public class AnswerController {
 //
 //		return "redirect:/question/{}id/answers";
 //	}
+=======
+	@PostMapping("/questions/{id}/answers")
+	// TODO Muuta vastaus tulemaan itse pyynnön mukana
+	@ResponseBody
+	public String saveAnswer(@PathVariable long id, @RequestBody String answer){
+		// Functional brahs
+		answerService.saveAnswer(id, answer);
+
+		return "Test";
+	}
+>>>>>>> 90b0ab4b91c9b4b769a3f6eb5f10282412eb62aa
 	
 	@PostMapping("/questions/answers")
 	@ResponseBody
