@@ -241,3 +241,36 @@ API RESPONSE:    ???????
     ],
     "new": false
 }
+## Post Answer
+
+Returns json data about posted question. Using Postman app
+
+New guestion
+API CALL:
+http://localhost:8080/questions/answers
+METHOD: POST
+PARAMETERS:
+- 
+EXAMPLES OF API CALL:
+http://localhost:8080/questions/answers (METHOD POST)
+API REQUEST BODY:
+ 
+[	{
+    "questionid": "1",
+    "answer": "hello world"
+	}
+]
+
+API RESPONSE:    ???????
+[
+    {
+        "id": 4,
+        "answer": "Vastaus 1",
+        "new": false
+    },
+    {
+        "id": 5,
+        "answer": "hello world",
+        "new": false
+    }
+]
