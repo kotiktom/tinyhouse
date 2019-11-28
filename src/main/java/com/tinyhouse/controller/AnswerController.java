@@ -41,28 +41,12 @@ public class AnswerController {
 	
 	}
 
-
-
-
-	
 	@PostMapping("/questions/answers")
 	@ResponseBody
 	// TODO Muuta vastaus tulemaan itse pyynnön mukana
-	public Question postAnswer(@RequestBody ArrayList<ResponseAnswer> answer){
+	public void postAnswer(@RequestBody ArrayList<ResponseAnswer> answer){
 		
-		for (int i = 0; i < answer.size(); i++) {
-		Question q = questionRepository.getOne(answer.get(i).getQuestionid());
-		
-		Answer newAnswer = new Answer(answer.get(i).getAnswer(), q);
-		
-		ArrayList<Answer> newQuestionWithAnswer = new ArrayList<Answer>();
-		newQuestionWithAnswer.add(newAnswer);
-	
-		answerrepo.save(newAnswer);
-		q.getAnswers().add(newAnswer);	
-		}
-		
-		return null;
+	answerService.saveAnswer(answer);
 		
 	}
 	
