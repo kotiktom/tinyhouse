@@ -43,7 +43,6 @@ public class AnswerController {
 
 	@PostMapping("/questions/answers")
 	@ResponseBody
-	// TODO Muuta vastaus tulemaan itse pyynnön mukana
 	public void postAnswer(@RequestBody ArrayList<ResponseAnswer> answer){
 		
 	answerService.saveAnswer(answer);
