@@ -34,7 +34,7 @@
 			<tbody>
 				<tr th:each="question : ${question}">			
  				 <td>  <a th:href="@{~/questions/{id}(id=${question.id})}">  [[${question.content}]]</a> <br/> </td>
- 				 <td>  <a th:href="@{~/questions/{id}/answers(id=${question.id})}">  Näytä vastaukset</a> <br/> </td>
+ 				 <td>  <a th:href="@{~/answer}">  Näytä vastaukset</a> <br/> </td>
 				
 				</tr>
 			</tbody>
