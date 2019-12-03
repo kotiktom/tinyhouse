@@ -49,6 +49,14 @@ public class AnswerController {
 		answerService.saveAnswer(answer);
 
 	}
+	
+	@PostMapping("/questions/one")
+	@ResponseBody
+	public void postOneAnswer(@RequestBody ResponseAnswer answer) {
+
+		answerService.saveOneAnswer(answer);
+
+	}
 
 	@GetMapping("/answers")
 	@ResponseBody
