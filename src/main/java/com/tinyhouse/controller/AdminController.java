@@ -82,11 +82,7 @@ public class AdminController{
 	public String addQuestion(@RequestParam String content, @RequestParam String inputType) {
 		Question q = new Question();
 		
-		if (inputType.equals("RADIO")) {
-			q.setInputType(InputType.RADIO);
-		}
-		
-		
+		q.setInputType(inputType);
 
 		q.setContent(content);
 		

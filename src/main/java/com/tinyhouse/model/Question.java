@@ -43,4 +43,26 @@ public class Question extends AbstractPersistable<Long> {
 		answers = new ArrayList<>();
 	}
 	
+	public void setInputType(String ipType) {
+
+		switch (ipType) {
+		case "TEXTFIELD":
+			inputType = InputType.TEXTFIELD;
+			break;
+		case "RADIO":
+			inputType = InputType.RADIO;
+			break;
+		case "DROPDOWN":
+			inputType = InputType.DROPDOWN;
+			break;
+		case "CHECKBOX":
+			inputType = InputType.CHECKBOX;
+			break;
+		default:
+			break;
+		}
+		
+	}
+	
+	
 }

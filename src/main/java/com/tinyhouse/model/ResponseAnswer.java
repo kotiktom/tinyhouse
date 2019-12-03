@@ -26,4 +26,4 @@ public class ResponseAnswer extends AbstractPersistable<Long> {
 	long questionId;
 	private String answer;
 	
-	}
+}
