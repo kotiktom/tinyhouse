@@ -13,28 +13,26 @@
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
 
-<title>Report</title>
+<title>Vastaukset</title>
 </head>
 
 <body>
 
 	<div class="container">
 		<br>
-		<h3>Report</h3>
+		<h3>Vastaukset =D</h3>
 		<hr>
 		<table border="1" class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
 					
-					<th>Question</th>
-					<th>Answer</th>
+					<th>Answers</th>
 					
 				</tr>
 			</thead>	
 			<tbody>
-				<tr th:each="question : ${question}">			
- 				 <td>  <a th:href="@{~/questions/{id}(id=${question.id})}">  [[${question.content}]]</a> <br/> </td>
- 				 <td>  <a th:href="@{~/answer}">  Näytä vastaukset</a> <br/> </td>
+				<tr th:each="answer: ${answer}">							
+					<td th:text="${answer.answer} "></td>
 				
 				</tr>
 			</tbody>

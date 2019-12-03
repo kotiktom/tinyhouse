@@ -1,5 +1,6 @@
 package com.tinyhouse.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.tinyhouse.model.Answer;
 import com.tinyhouse.model.Question;
+import com.tinyhouse.model.ResponseAnswer;
 import com.tinyhouse.repository.AnswerRepository;
 import com.tinyhouse.repository.QuestionRepository;
 
@@ -32,19 +34,20 @@ public class AnswerService {
 	}
 	
 	@Transactional	
-	public void saveAnswer(long id, String answerContent) {
+	public void saveAnswer(ArrayList<ResponseAnswer> answer) {
 		
-		Question question = questionRepository.getOne(id);
-		Answer answer = new Answer();
-		answer.setAnswer(answerContent);
-		answer.setQuestion(question);
-		answerRepository.save(answer);
-
-		question.getAnswers().add(answer);
-		questionRepository.save(question);
+		for (int i = 0; i < answer.size(); i++) {
+			Question q = questionRepository.getOne(answer.get(i).getQuestionid());
+			
+			Answer newAnswer = new Answer(answer.get(i).getAnswer(), q);
+			
+			ArrayList<Answer> newQuestionWithAnswer = new ArrayList<Answer>();
+			newQuestionWithAnswer.add(newAnswer);
 		
+			answerRepository.save(newAnswer);
+			q.getAnswers().add(newAnswer);	
+			}
 		
-		System.out.println("toimii");
 	}
 	
 	
