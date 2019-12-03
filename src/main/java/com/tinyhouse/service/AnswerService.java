@@ -34,10 +34,23 @@ public class AnswerService {
 	}
 	
 	@Transactional	
+	public void saveOneAnswer(ResponseAnswer answer) {
+			Question q = questionRepository.getOne(answer.getQuestionId());
+			
+			Answer newAnswer = new Answer(answer.getAnswer(), q);
+			
+			ArrayList<Answer> newQuestionWithAnswer = new ArrayList<Answer>();
+			newQuestionWithAnswer.add(newAnswer);
+		
+			answerRepository.save(newAnswer);
+			q.getAnswers().add(newAnswer);	
+	}
+	
+	@Transactional	
 	public void saveAnswer(ArrayList<ResponseAnswer> answer) {
 		
 		for (int i = 0; i < answer.size(); i++) {
-			Question q = questionRepository.getOne(answer.get(i).getQuestionid());
+			Question q = questionRepository.getOne(answer.get(i).getQuestionId());
 			
 			Answer newAnswer = new Answer(answer.get(i).getAnswer(), q);
 			

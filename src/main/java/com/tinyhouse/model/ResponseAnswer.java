@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper=false)
 public class ResponseAnswer extends AbstractPersistable<Long> {
 
-	long questionid;
+	long questionId;
 	private String answer;
 	
 	}
