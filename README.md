@@ -256,7 +256,7 @@ http://localhost:8080/questions/answers (METHOD POST)
 API REQUEST BODY:
  
 [	{
-    "questionid": "1",
+    "questionId": 1,
     "answer": "hello world"
 	}
 ]
