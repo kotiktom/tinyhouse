@@ -24,8 +24,6 @@ public class AnswerService {
 	@Autowired
 	QuestionRepository questionRepository;
 	
-
-	
 	public List<Answer> getAnswers(@PathVariable long id){
 		
 		Question q = questionRepository.getOne(id);
@@ -60,8 +58,6 @@ public class AnswerService {
 			answerRepository.save(newAnswer);
 			q.getAnswers().add(newAnswer);	
 			}
-		
 	}
-	
 	
 }
