@@ -43,7 +43,7 @@ public class TinyhouseApplication {
 			
 			
 			
-			answerService.saveAnswer(q1.getId(), "Vastaus 1");
+			//answerService.saveAnswer(q1.getId(), "Vastaus 1");
 
 			/*
 			 * InputType i = new
