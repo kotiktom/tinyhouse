@@ -24,8 +24,11 @@ import lombok.NoArgsConstructor;
 public class Question extends AbstractPersistable<Long> {
 
 	private String content;
+	
+	@OneToMany(mappedBy = "question")
+	private List<QuestionOption> questionOptions;
 
-	private InputType inputtype = InputType.TEXTFIELD;
+	private InputType inputType = InputType.TEXTFIELD;
 
 	@JsonIgnore
 	@ManyToOne

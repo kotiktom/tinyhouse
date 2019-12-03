@@ -31,7 +31,7 @@ public class TinyhouseApplication {
 			Question q1 = new Question("Opiskeluvuosi: ");
 			Question q2 = new Question("Mitä teet vapaa-ajallasi: ");
 			Question q3 = new Question("Vapaa-aikaa on mielestäni riittävästi: ");
-			q2.setInputtype(InputType.RADIO);
+			q2.setInputType(InputType.RADIO);
 
 
 			// Question q1 = new Question("Koulutusohjelma: ", i1, null, vastaukset);

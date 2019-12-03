@@ -22,6 +22,9 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper=false)
 public class QuestionOption extends AbstractPersistable<Long> {
 
+	@ManyToOne
+	private Question question;
+	
 	private String questionOption;
 
 }

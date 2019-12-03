@@ -22,7 +22,14 @@
 
         <form th:action="@{/admin/questions}" method="POST">
             <p>Content: <textarea name="content"></textarea></p>
-            <input type="submit" value="Add"></input>
+            <p>Input Type:
+            <select name="inputType">
+			  <option value="TEXTFIELD">Text</option>
+			  <option value="RADIO">RADIO</option>
+			  <option value="CHECKBOX">Checbox</option>
+			  <option value="DROPDOWN">Dropdown</option>
+			</select>
+        <input type="submit" value="Add"></input>
         </form>
 
     </body>

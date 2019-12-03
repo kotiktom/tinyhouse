@@ -6,7 +6,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.tinyhouse.model.Question;
+import com.tinyhouse.model.QuestionOption;
 
-public interface QuestionOptionRepository extends JpaRepository<Question, Long> {
+public interface QuestionOptionRepository extends JpaRepository<QuestionOption, Long> {
 	
 }

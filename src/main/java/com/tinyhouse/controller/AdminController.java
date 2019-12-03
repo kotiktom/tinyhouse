@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tinyhouse.model.InputType;
 import com.tinyhouse.model.Question;
 import com.tinyhouse.model.Survey;
 import com.tinyhouse.repository.QuestionRepository;
@@ -78,9 +79,17 @@ public class AdminController{
 	}
 
 	@PostMapping("/admin/questions")
-	public String addQuestion(@RequestParam String content) {
+	public String addQuestion(@RequestParam String content, @RequestParam String inputType) {
 		Question q = new Question();
+		
+		if (inputType.equals("RADIO")) {
+			q.setInputType(InputType.RADIO);
+		}
+		
+		
+
 		q.setContent(content);
+		
 		questionRepository.save(q);
 		
 		return "redirect:/admin/questions";
