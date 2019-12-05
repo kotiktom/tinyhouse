@@ -43,7 +43,6 @@ public class AnswerController {
 
 	}
 
-	@CrossOrigin(origins = "http://localhost:8080")
 	@PostMapping("/questions/answers")
 	@ResponseBody
 	public void postAnswer(@RequestBody ArrayList<ResponseAnswer> answer) {
