@@ -1,6 +1,7 @@
 package com.tinyhouse.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tinyhouse.model.InputType;
 import com.tinyhouse.model.Question;
+import com.tinyhouse.model.QuestionOption;
 import com.tinyhouse.model.Survey;
+import com.tinyhouse.repository.QuestionOptionRepository;
 import com.tinyhouse.repository.QuestionRepository;
 import com.tinyhouse.repository.SurveyRepository;
 
@@ -24,6 +27,9 @@ public class AdminController{
 	private QuestionRepository questionRepository;
 	@Autowired
 	private SurveyRepository surveyRepository;
+	
+	@Autowired
+	private QuestionOptionRepository questionOptionRepository;
 
 	@GetMapping("/admin/surveys")
     public String listExams(Model model) {
@@ -39,6 +45,35 @@ public class AdminController{
         return "survey";
     }
     
+    
+    @GetMapping("/admin/questions/{id}")
+    public String viewQuestion(Model model, @PathVariable Long id) {
+        model.addAttribute("question", questionRepository.getOne(id));
+        model.addAttribute("questions", questionOptionRepository.findAll());
+        
+        return "question";
+    }
+    
+    @PostMapping("/admin/questions/{questionId}/questions/")
+    @Transactional
+    public String addQuestionToQuestion(@PathVariable Long questionId, @RequestParam ArrayList<String> content) {
+
+        Question q = questionRepository.getOne(questionId);
+                
+        for(int i = 0; i < content.size(); i++) {
+        	
+        QuestionOption q1 = new QuestionOption(q, content.get(i));
+        questionOptionRepository.save(q1);
+        q.getQuestionOptions().add(q1);
+               
+        questionRepository.save(q);
+        }
+        return "redirect:/admin/questions/" + questionId;
+    }
+    
+    
+    
+    
     @PostMapping("/admin/surveys")
     public String addSurvey(@RequestParam String subject) {
         
@@ -53,13 +88,14 @@ public class AdminController{
 
     @PostMapping("/admin/surveys/{surveyId}/questions/")
     @Transactional
-    public String addQuestionToSurvey(@PathVariable Long surveyId, @RequestParam String content) {
+    public String addQuestionToSurvey(@PathVariable Long surveyId, @RequestParam String content, @RequestParam String inputType) {
 
         Survey survey = surveyRepository.getOne(surveyId);
         Question question = new Question();
         question.setAnswers(new ArrayList<>());
         question.setContent(content);
         question.setSurvey(survey);
+        question.setInputType(inputType);
         questionRepository.save(question);
 
         survey.getQuestions().add(question);
@@ -70,25 +106,5 @@ public class AdminController{
         
         return "redirect:/admin/surveys/" + surveyId;
     }
-
-
-	@GetMapping("/admin/questions")
-	public String list(Model model) {
-		model.addAttribute("questions", questionRepository.findAll());
-		return "questions";
-	}
-
-	@PostMapping("/admin/questions")
-	public String addQuestion(@RequestParam String content, @RequestParam String inputType) {
-		Question q = new Question();
-		
-		q.setInputType(inputType);
-
-		q.setContent(content);
-		
-		questionRepository.save(q);
-		
-		return "redirect:/admin/questions";
-	}
 	
 }

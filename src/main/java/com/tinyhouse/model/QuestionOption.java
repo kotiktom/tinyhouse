@@ -21,7 +21,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper=false)
 public class QuestionOption extends AbstractPersistable<Long> {
-
+	
+	@JsonIgnore
 	@ManyToOne
 	private Question question;
 	
