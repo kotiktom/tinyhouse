@@ -61,18 +61,20 @@ Returns json data about a single question.
         Code: 200
         Content: 
 	
-	{
+{
 
     "id": 1,
     "questions": [
         "test1",
         "test2"
     ],
+    
     "survey": null,
     "answers": [
         "test1",
         "test2"
     ],
+    
     "new": false,
     "hibernateLazyInitializer": { }
 
@@ -97,13 +99,13 @@ Returns json data about a single question.
         }
       });
 
-## Show questions
+## Show all questions
 
 Returns json data about all questions plural.
 
     URL
 
-    /questions/:id
+    /questions/
 
     Method:
 
@@ -111,7 +113,7 @@ Returns json data about all questions plural.
 
     URL Params
 
-    Required:
+    Not Required:
 
     id=[Long]
 
@@ -122,21 +124,33 @@ Returns json data about all questions plural.
     Success Response:
         Code: 200
         Content: 
-	
+       
 [
+
     {
         "id": 1,
-        "questions": [
-            "test1",
-            "test2"
-        ],
-        "survey": null,
-        "answers": [
-            "test1",
-            "test2"
-        ],
+        "content": "Opiskeluvuosi: ",
+        "questionOptions": [ ],
+        "inputType": "TEXTFIELD",
+        "new": false
+    },
+    
+    {
+        "id": 2,
+        "content": "Mitä teet vapaa-ajallasi: ",
+        "questionOptions": [ ],
+        "inputType": "RADIO",
+        "new": false
+    },
+    
+    {
+        "id": 3,
+        "content": "Vapaa-aikaa on mielestäni riittävästi: ",
+        "questionOptions": [ ],
+        "inputType": "TEXTFIELD",
         "new": false
     }
+    
 ]
 
     Error Response:
@@ -158,119 +172,83 @@ Returns json data about all questions plural.
         }
       });
 
-## Post question
+
+## Post an answer 
 
 Returns json data about posted question. Using Postman app
 
-New guestion
+URL
+
 API CALL:
-http://localhost:8080/question
-METHOD: POST
-PARAMETERS:
-- 
-EXAMPLES OF API CALL:
-http://localhost:8080/question (METHOD POST)
-API REQUEST BODY:
- {
-        
-        "questions": [
-            "test1",
-            "test2"
-        ],
-      
-        "answers": [
-            "test1",
-            "test2"
-        ]
-       
-    }
 
-API RESPONSE:    ???????
-{
-    "id": 5,
-    "questions": [
-        "test1",
-        "test2"
-    ],
-    "survey": null,
-    "answers": [
-        "test1",
-        "test2"
-    ],
-    "new": false
-}
-
-## Post answer /*saattaa olla keskeneräinen toistaiseksi */
-
-Returns json data about posted question. Using Postman app
-
-New guestion
-API CALL:
-http://localhost:8080/questions/1/answers
-METHOD: POST
-PARAMETERS:
-- 
-EXAMPLES OF API CALL:
-http://localhost:8080/questions/1/answers (METHOD POST)
-API REQUEST BODY:
- {
-        
-        "questions": [
-            "test1",
-            "test2"
-        ],
-      
-        "answers": [
-            "test1",
-            "test2"
-        ]
-       
-    }
-
-API RESPONSE:    ???????
-{
-    "id": 5,
-    "questions": [
-        "test1",
-        "test2"
-    ],
-    "survey": null,
-    "answers": [
-        "test1",
-        "test2"
-    ],
-    "new": false
-}
-## Post Answer
-
-Returns json data about posted question. Using Postman app
-
-New guestion
-API CALL:
 http://localhost:8080/questions/answers
+
 METHOD: POST
+
 PARAMETERS:
+
 - 
+
 EXAMPLES OF API CALL:
+
 http://localhost:8080/questions/answers (METHOD POST)
+
 API REQUEST BODY:
  
-[	{
-    "questionId": 1,
-    "answer": "hello world"
-	}
+[
+
+{
+"questionId" : 1,
+"answer": "Hello world example"
+}
+
 ]
 
 API RESPONSE:    ???????
+
+{
+  Status 200 ok
+}
+
+## Post Answers
+
+Returns json data about posted question. Using Postman app
+
+URL
+
+API CALL:
+
+http://localhost:8080/questions/answers
+
+METHOD: POST
+
+PARAMETERS:
+- 
+EXAMPLES OF API CALL:
+
+http://localhost:8080/questions/answers (METHOD POST)
+
+API REQUEST BODY:
+ 
 [
-    {
-        "id": 4,
-        "answer": "Vastaus 1",
-        "new": false
-    },
-    {
-        "id": 5,
-        "answer": "hello world",
-        "new": false
-    }
+
+{
+"questionId" : 1,
+"answer": "Hello world"
+},
+
+{
+"questionId" : 2,
+"answer": "RADIO"
+},
+
+{
+"questionId" : 3,
+"answer": "TEXTFIELD"	
+}
+
 ]
+
+API RESPONSE:    ???????
+
+Status 200 ok
