@@ -11,17 +11,28 @@
         </header>
 
 		<h1 th:text="${survey.subject}"></h1>        <h2>Questions</h2>
-
-        <section th:each="question: ${survey.questions}">
-            <p th:utext="${question.content}">content</p>
-        </section>
+        
+         <ul>
+            <li th:each="question: ${survey.questions}">
+                <a th:href="@{/admin/questions/{id}(id=${question.id})}">
+                    <span th:text="${question.content}">Topic</span>
+                </a>
+            </li>
+        </ul>
 
         <h2>Add an existing question to survey</h2>
 
        
             
                 <form th:action="@{/admin/surveys/{surveyId}/questions/(surveyId=${survey.id})}" method="POST">
-                <p>Content: <textarea name="content"></textarea></p>
+                 <p>Content: <textarea name="content"></textarea></p>
+            <p>Input Type:
+            <select name="inputType">
+			  <option value="TEXTFIELD">Text</option>
+			  <option value="RADIO">RADIO</option>
+			  <option value="CHECKBOX">Checbox</option>
+			  <option value="DROPDOWN">Dropdown</option>
+			</select>
             	<input type="submit" value="Add"></input>
                 
                    
