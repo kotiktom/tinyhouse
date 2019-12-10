@@ -36,6 +36,7 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/surveys")
+<<<<<<< HEAD
 	public String listExams(Model model) {
 		model.addAttribute("surveys", surveyRepository.findAll());
 		return "surveys";
@@ -61,6 +62,36 @@ public class AdminController {
 	public void ResetQuestions() {
 		questionRepository.deleteAll();
 		Question q1 = new Question("Opiskeluvuosi: ");
+=======
+    public String listExams(Model model) {
+        model.addAttribute("surveys", surveyRepository.findAll());
+        return "surveys";
+    }
+
+    @GetMapping("/admin/surveys/{id}")
+    public String viewExam(Model model, @PathVariable Long id) {
+        model.addAttribute("survey", surveyRepository.getOne(id));
+        model.addAttribute("questions", questionRepository.findAll());
+        
+        return "survey";
+    }
+    
+    
+    @GetMapping("/admin/questions/{id}")
+    public String viewQuestion(Model model, @PathVariable Long id) {
+        model.addAttribute("question", questionRepository.getOne(id));
+        model.addAttribute("questions", questionOptionRepository.findAll());
+        
+        return "question";
+    }
+    
+    @GetMapping("/admin/reset")
+    public String ResetQuestions() {
+    	answersRepository.deleteAll();
+      questionRepository.deleteAll();
+      surveyRepository.deleteAll();
+      Question q1 = new Question("Opiskeluvuosi: ");
+>>>>>>> cbfd8519f8dcba5436ce790085f219776e0f7e14
 		Question q2 = new Question("Mitä teet vapaa-ajallasi: ");
 		Question q3 = new Question("Vapaa-aikaa on mielestäni riittävästi: ");
 
