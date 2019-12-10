@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>Report</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<br>
+		<h3>Report</h3>
+		<hr>
+		<table border="1" class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					
+					<th>Question</th>
+					<th>Answer</th>
+					
+				</tr>
+			</thead>	
+			<tbody>
+				<tr th:each="question : ${question}">			
+ 				 <td>  <a th:href="@{~/questions/{id}(id=${question.id})}">  [[${question.content}]]</a> <br/> </td>
+ 				 <td>  <a th:href="@{~/answer/{id}(id=${question.id})}">  Näytä vastaukset 
+ 				 	(<span th:unless="${#lists.isEmpty(answer)}"><span th:text="${#lists.size(answer)}"/></span>)<br/> </td>
+						 <span "${question.content}"></span>
+						</a>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
+
+
+
+
+
