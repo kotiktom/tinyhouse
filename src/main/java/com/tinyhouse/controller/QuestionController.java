@@ -37,21 +37,7 @@ public class QuestionController {
 	public List<Question> getQuestions() {
 		return questionRepository.findAll();
 	}
-<<<<<<< HEAD
 
-=======
-	
-	@GetMapping("/questions/{id}")
-	@ResponseBody
-	public List<Question> getQuestionsBySurvey(@PathVariable Long id) {
-		
-		Survey survey = new Survey();
-		survey = surveyRepository.getOne(id);
-		List<Question >kysymysLista = survey.getQuestions();
-		return kysymysLista;
-	}
-	
->>>>>>> cbfd8519f8dcba5436ce790085f219776e0f7e14
 	@RequestMapping("/report")
 	public String report(Model model) {
 		model.addAttribute("question", questionRepository.findAll());
