@@ -58,19 +58,6 @@ public class AnswerController {
 
 	}
 
-	/*
-	 * @GetMapping("/answers")
-	 * 
-	 * @ResponseBody public List<Answer> getAnswers() { return answerrepo.findAll();
-	 * }
-	 */
-
-	/*
-	 * @RequestMapping("/answer") public String answer(Model model) {
-	 * model.addAttribute("question", questionRepository.findAll());
-	 * model.addAttribute("answer", answerRepository.findAll()); return "answer"; }
-	 */
-
 	@GetMapping("/answers")
 	@ResponseBody
 	public List<Answer> getAnswers() {

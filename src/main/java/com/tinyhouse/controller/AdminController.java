@@ -54,6 +54,18 @@ public class AdminController{
         return "question";
     }
     
+    @GetMapping("/admin/reset")
+    public void ResetQuestions() {
+      questionRepository.deleteAll(); 
+      Question q1 = new Question("Opiskeluvuosi: ");
+		Question q2 = new Question("Mitä teet vapaa-ajallasi: ");
+		Question q3 = new Question("Vapaa-aikaa on mielestäni riittävästi: ");
+
+		questionRepository.save(q1);
+		questionRepository.save(q2);
+		questionRepository.save(q3);
+    }
+    
     @PostMapping("/admin/questions/{questionId}/questions/")
     @Transactional
     public String addQuestionToQuestion(@PathVariable Long questionId, @RequestParam ArrayList<String> content) {
@@ -99,7 +111,6 @@ public class AdminController{
         questionRepository.save(question);
 
         survey.getQuestions().add(question);
-        
         
         questionRepository.save(question);
         surveyRepository.save(survey);
