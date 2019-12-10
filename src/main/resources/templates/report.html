@@ -28,6 +28,7 @@
 					
 					<th>Question</th>
 					<th>Answer</th>
+					<th><a href="/admin/reset" class="btn btn-success">Reset</a></th>
 					
 				</tr>
 			</thead>	
@@ -37,6 +38,7 @@
  				 <td>  <a th:href="@{~/answer/{id}(id=${question.id})}">  Näytä vastaukset <br/> </td>
 						 <span "${question.content}"></span>
 						</a>
+						
 				</tr>
 			</tbody>
 		</table>

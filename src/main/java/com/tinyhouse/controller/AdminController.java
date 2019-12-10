@@ -16,6 +16,7 @@ import com.tinyhouse.model.InputType;
 import com.tinyhouse.model.Question;
 import com.tinyhouse.model.QuestionOption;
 import com.tinyhouse.model.Survey;
+import com.tinyhouse.repository.AnswerRepository;
 import com.tinyhouse.repository.QuestionOptionRepository;
 import com.tinyhouse.repository.QuestionRepository;
 import com.tinyhouse.repository.SurveyRepository;
@@ -27,6 +28,8 @@ public class AdminController{
 	private QuestionRepository questionRepository;
 	@Autowired
 	private SurveyRepository surveyRepository;
+	@Autowired
+	private AnswerRepository answersRepository;
 	
 	@Autowired
 	private QuestionOptionRepository questionOptionRepository;
@@ -55,7 +58,8 @@ public class AdminController{
     }
     
     @GetMapping("/admin/reset")
-    public void ResetQuestions() {
+    public String ResetQuestions() {
+    	answersRepository.deleteAll();
       questionRepository.deleteAll(); 
       Question q1 = new Question("Opiskeluvuosi: ");
 		Question q2 = new Question("Mitä teet vapaa-ajallasi: ");
@@ -64,6 +68,8 @@ public class AdminController{
 		questionRepository.save(q1);
 		questionRepository.save(q2);
 		questionRepository.save(q3);
+		
+		return "redirect:/report/";
     }
     
     @PostMapping("/admin/questions/{questionId}/questions/")
