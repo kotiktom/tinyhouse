@@ -49,8 +49,6 @@ public class QuestionController {
 		return kysymysLista;
 	}
 	
-	
-
 	@RequestMapping("/report")
 	public String report(Model model) {
 		model.addAttribute("question", questionRepository.findAll());

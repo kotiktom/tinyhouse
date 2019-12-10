@@ -60,7 +60,8 @@ public class AdminController{
     @GetMapping("/admin/reset")
     public String ResetQuestions() {
     	answersRepository.deleteAll();
-      questionRepository.deleteAll(); 
+      questionRepository.deleteAll();
+      surveyRepository.deleteAll();
       Question q1 = new Question("Opiskeluvuosi: ");
 		Question q2 = new Question("Mitä teet vapaa-ajallasi: ");
 		Question q3 = new Question("Vapaa-aikaa on mielestäni riittävästi: ");
