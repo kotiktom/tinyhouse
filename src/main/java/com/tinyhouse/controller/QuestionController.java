@@ -2,6 +2,7 @@ package com.tinyhouse.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,18 @@ public class QuestionController {
 	public List<Question> getQuestions() {
 		return questionRepository.findAll();
 	}
+	
+	@GetMapping("/questions/{id}")
+	@ResponseBody
+	public List<Question> getQuestionsBySurvey(@PathVariable Long id) {
+		
+		Survey survey = new Survey();
+		survey = surveyRepository.getOne(id);
+		List<Question >kysymysLista = survey.getQuestions();
+		return kysymysLista;
+	}
+	
+	
 
 	@RequestMapping("/report")
 	public String report(Model model) {
