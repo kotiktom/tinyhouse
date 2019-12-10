@@ -1,14 +1,18 @@
 package com.tinyhouse;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.tinyhouse.model.Answer;
+import com.tinyhouse.model.InputType;
 import com.tinyhouse.model.Question;
-import com.tinyhouse.model.User;
 import com.tinyhouse.repository.QuestionRepository;
-import com.tinyhouse.repository.UserRepository;
 import com.tinyhouse.service.AnswerService;
 
 @SpringBootApplication
@@ -18,9 +22,10 @@ public class TinyhouseApplication {
 		SpringApplication.run(TinyhouseApplication.class, args);
 	}
 
+	
+	
 	@Bean
-	public CommandLineRunner tinyhouseRunner(QuestionRepository questionrepo, AnswerService answerService,
-			UserRepository urepository) {
+	public CommandLineRunner tinyhouseRunner(QuestionRepository questionrepo, AnswerService answerService) {
 		return (args) -> {
 
 			Question q1 = new Question("Opiskeluvuosi: ");
@@ -34,11 +39,10 @@ public class TinyhouseApplication {
 			questionrepo.save(q1);
 			questionrepo.save(q2);
 			questionrepo.save(q3);
-
-			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
-			urepository.save(user2);
-
-			// answerService.saveAnswer(q1.getId(), "Vastaus 1");
+			
+			
+			
+			//answerService.saveAnswer(q1.getId(), "Vastaus 1");
 
 			/*
 			 * InputType i = new
